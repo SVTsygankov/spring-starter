@@ -1,2 +1,5 @@
-package com.svtsygankov.spring.listener.entity;public class AccessType {
+package com.svtsygankov.spring.listener.entity;
+
+public enum AccessType {
+    CREATE, UPDATE, READ, DELETE
 }

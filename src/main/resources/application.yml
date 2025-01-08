@@ -1,0 +1,28 @@
+db:
+  url: jdbc:postgresql://localhost:5432/flight_repository
+  username: ${username.value:postgres}
+  password: postgres
+  driver: PostgresDriver
+  hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 456
+    third.value: Third
+  pool:
+    size: 12
+    timeout: 10
+  pools:
+    - size: 1
+      timeout: 1
+    - size: 2
+      timeout: 2
+    - size: 3
+      timeout: 3
+
+logging:
+  level:
+    root: WARN
+    com.svtsygankov.spring.database.pool.ConnectionPool: INFO
+  file:
+    name: svtsygankov.log
+    path: /

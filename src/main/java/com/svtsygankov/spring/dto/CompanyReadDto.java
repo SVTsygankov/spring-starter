@@ -1,2 +1,4 @@
-package com.svtsygankov.spring.dto;public record CompanyReadDto() {
+package com.svtsygankov.spring.dto;
+
+public record CompanyReadDto(Integer id) {
 }
