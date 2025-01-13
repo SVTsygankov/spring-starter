@@ -4,7 +4,6 @@ import com.svtsygankov.spring.database.entity.Company;
 import com.svtsygankov.spring.database.repository.CrudRepository;
 import com.svtsygankov.spring.dto.CompanyReadDto;
 import com.svtsygankov.spring.listener.entity.EntityEvent;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
