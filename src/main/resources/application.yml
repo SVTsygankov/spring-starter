@@ -19,10 +19,26 @@ db:
     - size: 3
       timeout: 3
 
+spring.profiles.active: qa
+
 logging:
   level:
-    root: WARN
+    root: INFO
     com.svtsygankov.spring.database.pool.ConnectionPool: INFO
   file:
     name: svtsygankov.log
     path: /
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: validate
+        default_schema: tables1
