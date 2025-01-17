@@ -6,7 +6,6 @@ import com.svtsygankov.spring.integration.annotation.IT;
 import com.svtsygankov.spring.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.TestConstructor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -1,8 +1,7 @@
 package com.svtsygankov.spring.service;
 
-import com.svtsygankov.spring.database.repository.CrudRepository;
+import com.svtsygankov.spring.database.repository.CompanyRepository;
 import com.svtsygankov.spring.dto.CompanyReadDto;
-import com.svtsygankov.spring.database.entity.Company;
 import com.svtsygankov.spring.listener.entity.AccessType;
 import com.svtsygankov.spring.listener.entity.EntityEvent;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.Optional;
 @Transactional
 public class CompanyService {
 
-    private final CrudRepository<Integer, Company> companyRepository;
+    private final CompanyRepository companyRepository;
     private final UserService userService;
     private final ApplicationEventPublisher eventPublisher;
 
