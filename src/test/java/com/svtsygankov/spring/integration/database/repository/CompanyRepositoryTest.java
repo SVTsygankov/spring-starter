@@ -6,6 +6,8 @@ import com.svtsygankov.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -28,7 +30,7 @@ public class CompanyRepositoryTest {
 
     @Test
     void checkFindByQueries() {
-        companyRepository.findByName("Google");
+        companyRepository.findByName( "google");
         companyRepository.findByNameContainingIgnoreCase("a");
     }
 
