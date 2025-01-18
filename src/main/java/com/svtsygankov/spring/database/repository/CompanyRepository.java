@@ -1,12 +1,16 @@
 package com.svtsygankov.spring.database.repository;
 
 import com.svtsygankov.spring.database.entity.Company;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 import java.util.Optional;
 
-public interface CompanyRepository extends Repository<Company, Integer> {
+public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
-    Optional<Company> findById(Integer id);
+// Можно использовать Optional Entity или Future
+   Optional<Company> findByName(String name);
 
-    void delete(Company entity);
+//   Можно использовать Collection или Stream
+   List<Company> findByNameContainingIgnoreCase(String fragment);
 }
