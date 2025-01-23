@@ -1,6 +1,7 @@
 package com.svtsygankov.spring.database.repository;
 
 import com.svtsygankov.spring.database.entity.Company;
+import com.svtsygankov.spring.dto.PersonalInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,5 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
 //   Можно использовать Collection или Stream
    List<Company> findByNameContainingIgnoreCase(String fragment);
+
 }

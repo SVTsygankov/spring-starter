@@ -2,6 +2,8 @@ package com.svtsygankov.spring.database.repository;
 
 import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.database.entity.User;
+import com.svtsygankov.spring.dto.PersonalInfo;
+import com.svtsygankov.spring.dto.PersonalInfo2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -47,4 +49,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select u from User u",
         countQuery = "select count(distinct u.firstname) from User u")
     Page<User> findAllBy(Pageable pageable);
+
+//    List<PersonalInfo> findAllByCompanyId(Integer companyId);
+
+//    <T> List<T> findAllByCompanyId(Integer companyId, Class<T> clazz);
+@Query(value = "SELECT firstname, " +
+        "lastname, " +
+        "birth_date birthDate " +
+        "FROM users " +
+        "WHERE company_id = :companyId",
+        nativeQuery = true)
+List<PersonalInfo2> findAllByCompanyId(Integer companyId);
 }
