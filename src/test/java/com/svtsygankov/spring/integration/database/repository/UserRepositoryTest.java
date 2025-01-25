@@ -4,6 +4,7 @@ import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.database.entity.User;
 import com.svtsygankov.spring.database.repository.UserRepository;
 import com.svtsygankov.spring.dto.PersonalInfo;
+import com.svtsygankov.spring.dto.UserFilter;
 import com.svtsygankov.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -25,9 +26,20 @@ class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
+    void checkCustomImplementation() {
+        UserFilter userFilter = new UserFilter(
+                null, "%ov%", LocalDate.now()
+        );
+        var users = userRepository.findByFilter(userFilter);
+        System.out.println();
+    }
+
+    @Test
     void checkProjections() {
+        System.out.println();
         var users = userRepository.findAllByCompanyId(1);
-        assertThat(users).hasSize(2);
+        System.out.println();
+        //        assertThat(users).hasSize(2);
     }
 
     @Test

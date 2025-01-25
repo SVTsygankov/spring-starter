@@ -10,7 +10,7 @@ public interface PersonalInfo2 {
 
     String getBirthDate();
 
-    @Value("#{target.firstname + ' ' + target.lastname}")
-    String getFullName();
+//    @Value("#{target.firstname + ' ' + target.lastname}")
+//    String getFullName();
 
 }

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>, FilterUserRepository {
 
     @Query("select u from User u where u.firstname like %:firstname% and u.lastname like %:lastname%")
     List<User> findAllBy(String firstname, String lastname);
@@ -53,9 +53,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    List<PersonalInfo> findAllByCompanyId(Integer companyId);
 
 //    <T> List<T> findAllByCompanyId(Integer companyId, Class<T> clazz);
-@Query(value = "SELECT firstname, " +
-        "lastname, " +
-        "birth_date birthDate " +
+@Query(value = "SELECT firstname," +
+        "lastname," +
+        "birth_date " +
         "FROM users " +
         "WHERE company_id = :companyId",
         nativeQuery = true)
