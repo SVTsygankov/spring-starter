@@ -3,16 +3,15 @@ package com.svtsygankov.spring.integration.database.repository;
 import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.database.entity.User;
 import com.svtsygankov.spring.database.repository.UserRepository;
-import com.svtsygankov.spring.dto.PersonalInfo;
 import com.svtsygankov.spring.dto.UserFilter;
 import com.svtsygankov.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,9 +25,10 @@ class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
+    @Commit
     void checkAuditing() {
         var ivan = userRepository.findById(1L).get();
-        ivan.setBirthDate(ivan.getBirthDate().plusYears(1L));
+        ivan.setBirthDate(ivan.getBirthDate().plusYears(2L));
         userRepository.flush();
         System.out.println();
     }
