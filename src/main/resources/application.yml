@@ -40,8 +40,9 @@ spring:
     driver-class-name: org.postgresql.Driver
     default_schema: tables1
   jpa:
-    properties:
-      hibernate:
+    properties.hibernate:
+        batch_size: 50
+        fetch_size: 50
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate

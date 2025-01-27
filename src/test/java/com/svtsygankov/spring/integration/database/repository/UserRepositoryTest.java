@@ -3,7 +3,6 @@ package com.svtsygankov.spring.integration.database.repository;
 import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.database.entity.User;
 import com.svtsygankov.spring.database.repository.UserRepository;
-import com.svtsygankov.spring.dto.PersonalInfo;
 import com.svtsygankov.spring.dto.UserFilter;
 import com.svtsygankov.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UserRepositoryTest {
 
     private final UserRepository userRepository;
+
+   @Test
+   void checkBatch() {
+       var users = userRepository.findAll();
+       userRepository.updateCompanyAndRoleNamed(users);
+       System.out.println();
+   }
 
     @Test
     void checkJdbcTemplate() {
