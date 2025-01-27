@@ -4,15 +4,10 @@ db:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=tables1
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
-    default_schema: tables1
+    url: jdbc:h2:mem:test
+    username:
+    password:
+    driver-class-name: org.h2.Driver
   jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-        hbm2ddl.auto: validate
-        default_schema: tables1
+    properties.hibernate:
+      hbm2ddl.auto: update

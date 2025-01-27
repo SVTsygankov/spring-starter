@@ -5,7 +5,7 @@ db:
   password: postgres
   driver: PostgresDriver
   hosts: localhost,127.0.0.1
-  default_schema: tables1
+#  default_schema: tables1
   properties:
     first: 123
     second: 456
@@ -38,7 +38,7 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-    default_schema: tables1
+#    default_schema: tables1
   jpa:
     properties.hibernate:
         batch_size: 50
@@ -46,4 +46,4 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate
-        default_schema: tables1
+#        default_schema: tables1
