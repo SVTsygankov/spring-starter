@@ -27,6 +27,7 @@ logging:
   level:
     root: INFO
     com.svtsygankov.spring.database.pool.ConnectionPool: INFO
+    org.springframework.jdbc.core: TRACE
   file:
     name: svtsygankov.log
     path: /
