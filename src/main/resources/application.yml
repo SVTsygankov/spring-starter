@@ -5,7 +5,6 @@ db:
   password: postgres
   driver: PostgresDriver
   hosts: localhost,127.0.0.1
-  default_schema: tables1
   properties:
     first: 123
     second: 456
@@ -33,15 +32,13 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=tables1
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-    default_schema: tables1
   jpa:
     properties:
       hibernate:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate
-        default_schema: tables1
