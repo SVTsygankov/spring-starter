@@ -34,7 +34,7 @@ public class GreetingController {
                         HttpServletRequest request,
                         @ModelAttribute("userReadDto") UserReadDto userReadDto) {
                         // здесь @ModelAttribute не является обязательной
-        model.addAttribute("user", new UserReadDto(1l, "Ivan"));
+//        model.addAttribute("user", new UserReadDto(1l, "Ivan"));
         return "greeting/hello";
     }
 
