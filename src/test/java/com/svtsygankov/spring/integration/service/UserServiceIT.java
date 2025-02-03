@@ -1,23 +1,94 @@
 package com.svtsygankov.spring.integration.service;
 
-import com.svtsygankov.spring.database.pool.ConnectionPool;
+import com.svtsygankov.spring.database.entity.Role;
+import com.svtsygankov.spring.dto.UserCreateEditDto;
+import com.svtsygankov.spring.dto.UserReadDto;
+import com.svtsygankov.spring.integration.IntegrationTestBase;
 import com.svtsygankov.spring.integration.annotation.IT;
 import com.svtsygankov.spring.service.UserService;
 import lombok.RequiredArgsConstructor;
+
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.SpyBean;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @IT
 @RequiredArgsConstructor
-public class UserServiceIT {
+public class UserServiceIT extends IntegrationTestBase {
+
+    private static final Long USER_1 = 1L;
+    private static final Integer COMPANY_1 = 1;
 
     private final UserService userService;
 
-    @SpyBean(name = "pool1")
-    private ConnectionPool pool1;
 
     @Test
-    void test() {
+    void findAll() {
+        var users = userService.findAll();
+        assertThat(users).hasSize(5);
+    }
 
+    @Test
+    void findById() {
+        var maybeUser = userService.findById(USER_1);
+        assertTrue(maybeUser.isPresent());
+        maybeUser.ifPresent(user -> assertEquals("ivan@gmail.com", user.getUsername()));
+    }
+
+    @Test
+    void create() {
+        UserCreateEditDto userDto = new UserCreateEditDto(
+                "test@mail.ru",
+                LocalDate.now(),
+                "Test",
+                "Test",
+                Role.ADMIN,
+                COMPANY_1
+        );
+        var actualResult = userService.create(userDto);
+
+        assertEquals(userDto.getUsername(),actualResult.getUsername());
+        assertEquals(userDto.getBirthDate(),actualResult.getBirthDate());
+        assertEquals(userDto.getFirstname(),actualResult.getFirstname());
+        assertEquals(userDto.getLastname(),actualResult.getLastname());
+        assertSame(userDto.getRole(),actualResult.getRole());
+        assertEquals(userDto.getCompanyId(),actualResult.getCompany().id());
+    }
+
+    @Test
+    void update() {
+
+        UserCreateEditDto userDto = new UserCreateEditDto(
+                "test@mail.ru",
+                LocalDate.now(),
+                "Test",
+                "Test",
+                Role.ADMIN,
+                COMPANY_1
+        );
+
+        var actualResult = userService.update(USER_1, userDto);
+
+        actualResult.ifPresent(user -> {
+            assertEquals(userDto.getUsername(), user.getUsername());
+            assertEquals(userDto.getBirthDate(), user.getBirthDate());
+            assertEquals(userDto.getFirstname(), user.getFirstname());
+            assertEquals(userDto.getLastname(), user.getLastname());
+            assertSame(userDto.getRole(), user.getRole());
+            assertEquals(userDto.getCompanyId(), user.getCompany().id());
+        });
+    } 
+    
+    @Test
+    void delete () {
+        assertFalse(userService.delete(-123L));
+        assertTrue(userService.delete(USER_1));
     }
 }
