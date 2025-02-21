@@ -1,7 +1,3 @@
-CREATE SCHEMA tables1;
-SET search_path TO tables1;
-
-
 CREATE TABLE IF NOT EXISTS company
 (
     id SERIAL PRIMARY KEY ,

@@ -1,5 +1,5 @@
 db:
-  url: jdbc:postgresql://localhost:5432/flight_repository
+  url: jdbc:postgresql://localhost:5432/postgres
   username: ${username.value:postgres}
   password: postgres
   driver: PostgresDriver
@@ -41,4 +41,3 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate
-        default_schema: tables1
