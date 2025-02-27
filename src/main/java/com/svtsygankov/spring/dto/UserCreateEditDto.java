@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Value
-@FieldNameConstants
+@FieldNameConstants  // создает константы для всех имен полей (их мы используем в тесте).
 public class UserCreateEditDto {
     String username;
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -1,13 +1,10 @@
 package com.svtsygankov.spring.integration.http.controller;
 
-import com.svtsygankov.spring.dto.UserCreateEditDto;
 import com.svtsygankov.spring.integration.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.time.LocalDate;
 
 import static com.svtsygankov.spring.dto.UserCreateEditDto.Fields.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

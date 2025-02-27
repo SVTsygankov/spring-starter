@@ -53,4 +53,5 @@ spring:
         format_sql: true
         hbm2ddl.auto: validate
     open-in-view: false
+#   open-in-view: false - запрещает открытие транзакций на уровне контроллера
 #        default_schema: tables1
