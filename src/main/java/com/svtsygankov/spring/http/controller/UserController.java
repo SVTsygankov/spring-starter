@@ -1,6 +1,8 @@
 package com.svtsygankov.spring.http.controller;
 
+import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.dto.UserCreateEditDto;
+import com.svtsygankov.spring.service.CompanyService;
 import com.svtsygankov.spring.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class UserController {
 
     private final UserService userService;
+    private final CompanyService companyService;
 
     @GetMapping
     public String findAll(Model model) {
@@ -32,8 +35,12 @@ public class UserController {
     @GetMapping("/{id}")
     public String findById(@PathVariable("id") Long id, Model model) {
         return userService.findById(id)
-                .map(user -> {model.addAttribute("user", user);
-                return "user/user";})
+                .map(user -> {
+                    model.addAttribute("user", user);
+                    model.addAttribute("roles", Role.values());
+                    model.addAttribute("companies", companyService.findAll());
+                    return "user/user";
+                })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
