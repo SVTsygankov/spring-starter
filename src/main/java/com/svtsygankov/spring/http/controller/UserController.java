@@ -4,6 +4,8 @@ import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.dto.UserCreateEditDto;
 import com.svtsygankov.spring.service.CompanyService;
 import com.svtsygankov.spring.service.UserService;
+import com.svtsygankov.spring.validation.group.CreateAction;
+import com.svtsygankov.spring.validation.group.UpdateAction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.groups.Default;
 
 @Controller
 @RequestMapping("/users")
@@ -48,7 +52,7 @@ public class UserController {
 
     @PostMapping
 //    @ResponseStatus(HttpStatus.CREATED)
-    public String create(@ModelAttribute @Validated UserCreateEditDto user,
+    public String create(@ModelAttribute @Validated({Default.class, CreateAction.class}) UserCreateEditDto user,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -70,7 +74,8 @@ public class UserController {
 //    @PutMapping("/{id}")
     @Transactional
     @PostMapping("/{id}/update")
-    public String update(@PathVariable("id") Long id, @ModelAttribute @Validated UserCreateEditDto user) {
+    public String update(@PathVariable("id") Long id,
+                         @ModelAttribute @Validated({Default.class, UpdateAction.class}) UserCreateEditDto user) {
         return userService.update(id, user)
                 .map(it -> "redirect:/users/{id}")
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
