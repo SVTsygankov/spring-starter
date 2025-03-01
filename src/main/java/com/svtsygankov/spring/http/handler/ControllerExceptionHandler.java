@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 @Slf4j
-@ControllerAdvice
+@ControllerAdvice(basePackages = "com.svtsygankov.spring.http.controller")
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(Exception.class)
