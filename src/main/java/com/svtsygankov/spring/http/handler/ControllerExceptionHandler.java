@@ -1,4 +1,4 @@
-package com.svtsygankov.spring.handler;
+package com.svtsygankov.spring.http.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
