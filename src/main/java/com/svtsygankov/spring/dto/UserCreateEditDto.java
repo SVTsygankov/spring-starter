@@ -2,10 +2,10 @@ package com.svtsygankov.spring.dto;
 
 import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.validation.UserInfo;
-import com.svtsygankov.spring.validation.group.CreateAction;
 import com.svtsygankov.spring.validation.group.UpdateAction;
 import lombok.Value;
 import lombok.experimental.FieldNameConstants;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -29,4 +29,6 @@ public class UserCreateEditDto {
     Role role;
 
     Integer companyId;
+
+    MultipartFile image;
 }
