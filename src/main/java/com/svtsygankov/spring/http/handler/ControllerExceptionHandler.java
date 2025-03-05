@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice(basePackages = "com.svtsygankov.spring.http.controller")
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public String handleException(Exception exception, HttpServletRequest httpServletRequest) {
-        log.error("Failed to return response");
-        return "error/error500";
-    }
+//    @ExceptionHandler(Exception.class)
+//    public String handleException(Exception exception, HttpServletRequest httpServletRequest) {
+//        log.error("Failed to return response");
+//        return "error/error500";
+//    }
 }
