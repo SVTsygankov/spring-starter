@@ -3,6 +3,7 @@ package com.svtsygankov.spring.database.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -25,7 +26,7 @@ public abstract class AuditingEntity<T extends Serializable> implements BaseEnti
     @LastModifiedDate
     private Instant modifiedAt;
 
-    @CreatedDate
+    @CreatedBy
     private String createdBy;
 
     @LastModifiedBy
