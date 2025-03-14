@@ -70,7 +70,6 @@ public class FilterUserRepositoryImpl implements FilterUserRepository{
                 rs.getString("lastname"),
                 rs.getDate("birth_date").toLocalDate()
         ), companyId, role.name());
-
     }
 
     @Override
@@ -96,5 +95,4 @@ public class FilterUserRepositoryImpl implements FilterUserRepository{
                 .toArray(MapSqlParameterSource[]::new);
         namedJdbcTemplate.batchUpdate(UPDATE_COMPANY_AND_ROLE_NAMED, args);
     }
-
 }

@@ -2,7 +2,6 @@ package com.svtsygankov.spring.database.repository;
 
 import com.svtsygankov.spring.database.entity.Role;
 import com.svtsygankov.spring.database.entity.User;
-import com.svtsygankov.spring.dto.PersonalInfo;
 import com.svtsygankov.spring.dto.PersonalInfo2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.history.RevisionRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.LockModeType;
