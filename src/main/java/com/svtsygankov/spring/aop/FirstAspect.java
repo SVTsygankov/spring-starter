@@ -62,5 +62,11 @@ public class FirstAspect {
     public void isServiceLayerBean() {
     }
 
+    /*
+        execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) throws-pattern?)
+     */
+    @Pointcut("execution(public * com.svtsygankov.spring.service.*Service.findById(*))")
+    public void anyFindByIdServiceMethod() {
+    }
 
 }
