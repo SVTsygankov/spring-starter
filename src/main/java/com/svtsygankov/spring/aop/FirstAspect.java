@@ -1,13 +1,11 @@
 package com.svtsygankov.spring.aop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.data.repository.Repository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
+@Slf4j
 @Aspect
 @Component
 public class FirstAspect {
@@ -69,4 +67,8 @@ public class FirstAspect {
     public void anyFindByIdServiceMethod() {
     }
 
+    @Before("anyFindByIdServiceMethod()")
+    public void addLogging() {
+        log.info("invoked findById method");
+    }
 }
