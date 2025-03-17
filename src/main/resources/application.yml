@@ -23,6 +23,10 @@ db:
 
 spring.profiles.active: qa
 
+app.common.logging:
+  enabled: true
+  level: INFO
+
 logging:
   level:
     root: INFO

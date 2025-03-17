@@ -1,11 +1,10 @@
-package com.svtsygankov.spring.aop;
+package com.svtsygankov.logging.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
 public class CommonPointcuts {
     /*
         @within - check annotation on the class level
@@ -17,7 +16,7 @@ public class CommonPointcuts {
     /*
             within - check class type name
     */
-    @Pointcut("within(com.svtsygankov.spring.service.*Service)")
+    @Pointcut("within(com.svtsygankov.*.service.*Service)")
     public void isServiceLayer() {
     }
 }
